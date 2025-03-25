@@ -1,29 +1,36 @@
-
 import { useState } from "react";
-//리액트에서 유즈 스테이트를 가져왔음.
 
 export default function App(){
-    return( 
-    <>
-    <Counter></Counter>
-    </>
-    )
-}
+    const [setmode, modeChange]=useState("welcome");
+    const [id , idChange]=useState(0);
+    const [arr, arrChange]=useState([
+        {title: "a1", log:"수수1"},
+        {title: "a2", log:"수수2"},
+        {title: "a3", log:"수수3"}
+    ]);
 
+    // content=null;    
+    // if(setmode="welcome"){
+    //     content=<h1>welcome</h1>;
+   
 
-function Counter(){
-    const [state,setState] = useState(0);
+    return (
+        <>
+      <Header changeH={()=>{
+        modeChange("welcome");
+      }}>
+      </Header>
+        </>
+)}
 
+function Header(props){
     return(
-        <div>
-            <h1>State 값: {state}</h1>
-            <button onClick={()=>setState(state+1)
-            }>
-                1씩 증가
-            </button>
-
-        </div>
+        <>
+        <h1><a href="./" onClick={(e)=>{
+            e.preventDefault();
+            props.changeH();
+        }
+        }>헤더구조</a></h1>        
+        </>
     )
 }
-
-
