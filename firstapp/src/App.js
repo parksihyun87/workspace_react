@@ -1,8 +1,8 @@
 
 import Header from "./Header";
 import Nav from "./Nav";
-import Article from "./Article";// 임포트+함수이름+from+경로 네가지.
-import { useState } from "react";// 그냥 가져오는 거임.
+import Article from "./Article";
+import { useState } from "react";
 import Create from "./create";
 
 
@@ -47,8 +47,8 @@ function App() {
       // 한번에 바꾸지 않음. 끝나고 나서 빈틈에 처리함.
 
 
-      topics.push(newTopic)
-      setTopics(topics);
+      // topics.push(newTopic)
+      // setTopics(topics);
     }}></Create>
   }
 

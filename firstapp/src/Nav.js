@@ -1,5 +1,5 @@
 
-export default function Nav(props){//{topics:[...]},onChangeMode:(id)=>{alert(id);}
+export default function Nav(props){//{topics:[...],onChangeMode:(id)=>{alert(id);}
   const lis=[];
   for(let i=0; i<props.topics.length; i++){
     let t= props.topics[i];
