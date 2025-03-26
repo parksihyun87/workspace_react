@@ -35,7 +35,6 @@ function App() {
       }
     }
     content= <Article title={title} body={body}></Article>;
-    
     contextControl = <>
     <li><a href={"/update/"+id} onClick={(e)=>{
       e.preventDefault();
@@ -83,8 +82,7 @@ function App() {
       // 객체도 배열안에 있으면 덮어씌워 진다.
     }}></Update>
   }
-  // 
-
+  
   //* 리턴부분
   return(
     <>
@@ -101,9 +99,7 @@ function App() {
           e.preventDefault();
           setMode("create");
         }}>Create</a></li>
-        
         {contextControl}
-        {/* 새로 구현된 구역 */}
     </>
   );
   }
