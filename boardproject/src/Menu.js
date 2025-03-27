@@ -7,11 +7,13 @@ export default function Menu(props){
     }}>{m.title}</a>
     menuLst.push(item);
   }
-  
 
 
+
   
-  
+  // 메뉴 조차 포문으로 돌리고 객체 속성을 작성하여 필요한 기능을
+  // 입력받아 연동시킨다.
+
   return(
       <>
         {menuLst}
@@ -26,7 +28,3 @@ export default function Menu(props){
   // 이렇게 쌍으로 줘야 함.
   // 이름도 하이픈대신 대문자로 카멜로 이어서 씀
   // 하고 : '안에 값' 넣어줌.
-  // 되도록 데이터하고 코드를 분리시킬 수 있으면 좋다.
-  // 데이터가 고쳐졌다고 코드가 고쳐지지 않도록 한다.
-  
-  

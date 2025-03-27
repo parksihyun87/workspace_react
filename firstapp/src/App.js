@@ -41,13 +41,14 @@ function App() {
       e.preventDefault();
       setMode("update");
     }}>Update</a></li>
+      {/* 현재 아이디를 삭제함 */}
     <li><button onClick={(e)=>{
       const filterTopics=topics.filter((t)=>t.id!==Number(id))
       setTopics(filterTopics);
-      //현재 아이디를 삭제함
       setMode("welcome");
     }}>Delete</button></li>
     </>
+    // 태그가 여러개 내용으로 들어갈때는 빈태그로 감싸는 경우가 많음
   
     // * 크리에이트 모드
   }else if(mode==="create"){
