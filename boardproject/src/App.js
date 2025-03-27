@@ -38,8 +38,8 @@ function App() {
    
     // 라이트 모드
     case "write": 
-      content=<Write onChangeMode={(_title,_body,_writer)=>{
-      let newObj={id:nextId, title:_title, body:_body, writer:_writer};
+      content=<Write onChangeMode={(title,writer,body)=>{
+      let newObj={id:nextId, title, writer, body};
       // _title 그냥 가져와도 된다. 이미 온체인지 모드 뒤에는 java script 영역이다.
       // 매개변수와 속성명을 같게 하면, 매개변수 하나만 써도 속석명안에 매개변수가 연결된다.
       const newMenuList =[...postList,newObj];
@@ -51,10 +51,10 @@ function App() {
       break; 
     // 리드 모드 
     case "read": 
-      let readObj=postList.find((e)=>(Number(Id)===e.id));
+      let readObj=postList.find((e)=>(Number(Id)===e.id)); 
       // 아이디를 가져올때 객체에서 빼와서 문자화 되어있어서 넘버붙여줘야 한다.
       // 파인드가 다 관여하며 해당 배열중 하나인 객체만 넘겨줌.
-      content=<Read readObj={readObj} onChangeMode={(title,writer,body)=>{
+      content=<Read readObj={readObj} onChangeMode={(title, writer, body)=>{
         const changeObj={id:Number(Id), title, writer, body};
         const newReadLst=[...postList];
         for(let i=0; i<newReadLst.length;i++){
