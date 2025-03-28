@@ -49,11 +49,13 @@ function App() {
       }} ></Write> 
       // 이 영역 전체가 자바 스크립트.
       break; 
-    // 리드 모드 
+    
+      // 리드 모드 
     case "read": 
       let readObj=postList.find((e)=>(Number(Id)===e.id)); 
       // 아이디를 가져올때 객체에서 빼와서 문자화 되어있어서 넘버붙여줘야 한다.
       // 파인드가 다 관여하며 해당 배열중 하나인 객체만 넘겨줌.
+      // 한개만 찾을때는 파인드.
       content=<Read readObj={readObj} onChangeMode={(title, writer, body)=>{
         const changeObj={id:Number(Id), title, writer, body};
         const newReadLst=[...postList];
@@ -63,6 +65,8 @@ function App() {
             break;
           }
         }
+        // 먼저 부모 함수에서 할 일 먼저 정리하고 진행하는 방법
+        // let a of as 써도 될 것 같은데.
         setPostList(newReadLst);
         setMode("list");
       }} onDeleteMode={(e)=>{
