@@ -77,6 +77,7 @@ function Intro(){
       "유즈파란바람바람스"
     </>
   );
+  
 }
 
 function Side(){
