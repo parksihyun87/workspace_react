@@ -73,12 +73,14 @@ function List(){
 
 function Write(){
     const {fetch}=useOutletContext();
+    const navigate=useNavigate();
     //여러개를 전달할때는 위와 같이 모두 객체로 묶어 전달하고 객체분해 전달로 다시 원래대로 바꾼다.
 
     return(
         <>  <form name="formTag" onSubmit={(e)=>{
             e.preventDefault();
             fetch(e.target.title.value,e.target.writer.value,e.target.body.value);
+            navigate("/")
         }}> 
                 <input name="title" type="text"></input><br/>
                 <input name="writer" type="text"></input><br/>
@@ -93,20 +95,28 @@ function Read(){
     const params=useParams();
     // 초장에 객체구조분해 해 버려서 변수를 쓰자
     // const{id}=useParams();
-
+    const navigate=useNavigate();
     const{arr,nextId,arrSet}=useOutletContext();
     const readObj=arr.find((e)=>(e.id===Number(params.id)));
+    // find가 언디파인이 남.
     // params는 객체화 됨. id로 parameter 변수명을 바꾸자. {id:1}// params.id로 접근, 변수명과 속성명이 결합한다고 치부하자.
     
     // 리드 오비제이로 새 객체 형성
-    const [title,setTitle]=useState(readObj.title);
+    const [title,setTitle]=useState(readObj?readObj.title:"");
     // 타이틀 자체의 값이 변화될때 렌더링 하며, 연달아 기존 초기의 값도 연동하도록 title에 저장해놓자.
     // 이 값이 조금이라도 변하면 랜더링 되는 방아쇠가 된다.
-    const [writer,setWriter]=useState(readObj.writer);
-    const [body,setBody]=useState(readObj.body);
-    const newArr=[...arr];
-    const navigate=useNavigate();
-
+    const [writer,setWriter]=useState(readObj?readObj.writer:"");
+    const [body,setBody]=useState(readObj?readObj.body:"");
+    // 3항 연산자로 없을시를 설정을 해줘야 한다. 뛰어넘을 수는 없다. 없으면 없는대로라도 값을 줘야 한다.
+    if(!readObj){
+        return;
+    }
+    //없으면, 언디파인등이면 그만 리턴하라고 하자.
+    let newArr=[...arr];
+    // 배열은 미리 기존의 상태값 배열을 다른 이름으로 생성해 놓는다.
+    // 동일 주소도 피하고, 중간에 변경값이 생기는 것들에 대해서도 적용해야 하므로.
+    // 지역변수로 만들면 소멸하니 이 위에 필요하다. 
+    
 
     return(
         <>  <form name="formTag"> 
@@ -129,13 +139,21 @@ function Read(){
                             break;
                         }
                     }
-                //태그 안에서 여기는 js와 달라서 jsx로 바꿈
                 
                 arrSet(newArr);
+                // 기존배열안에 새로운 배열의 값으로 대치해주며, 리렌더링을 유도한다.
                 navigate("/");
 
                 }}>수정</button>
-                <button>삭제</button>
+                <button onClick={(e)=>{
+                   e.preventDefault();
+                   navigate("/");
+                   const updateArr=newArr.filter((e)=>e.id!==Number(params.id))
+                    //관계를 잘 유착하자.
+                    //대괄호를 쓰려면 리턴이 필요하다.
+                    arrSet(updateArr);
+
+                }}>삭제</button>
             </form>
         </>
     );
