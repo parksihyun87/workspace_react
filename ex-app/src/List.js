@@ -33,10 +33,10 @@ export default function List(){
             <ul>
                 {arr.map((item, index) => (
                     <li key={index}>{item.title}<button id={index} onClick={(e)=>{
-                        dispatch(onDelete({id:item.id}));
+                        dispatch(onDelete({id: item.id}));
                         //객체 형태로 넘겨주자. 
-                   }
-                   }>삭제</button></li>))}
+                }
+                }>삭제</button></li>))}
             </ul>
             {/* 맵을 이용하여 작성.  */}
 

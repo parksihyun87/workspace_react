@@ -15,6 +15,13 @@ const counterSlice=createSlice({
     reducers:{
         onSave: (state,action)=>{
             state.wishList.push({...action.payload});
+            console.log("action");
+            console.log(action);
+            console.log("payload");
+            console.log(action.payload);
+            console.log("{...action.payload}");
+            console.log({...action.payload});
+            //{title:action.payload.title , id:action.payload.id}
             // 기본으로 state는 보내고, action은 뭔가 받을 목적으로
             // 부가정보는.payload라고 쓴다.
             // 보내는 듯 하다.
