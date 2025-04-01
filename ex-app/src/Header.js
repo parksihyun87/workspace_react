@@ -1,5 +1,12 @@
-import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
-function Header(props){
-const[a,setA]=useState
+export default function Header(){
+    return(
+        <>
+            <h1>To-DO List</h1>
+            
+            <Outlet></Outlet>
+            
+        </>
+    );
 }
