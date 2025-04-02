@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 export default function ReadPost(){
     const {postId} = useParams();   
     const item=useSelector((state)=>state.postList.postList.find((p)=>p.id ===Number(postId)));
+    // 콜렉터는 변수 선언과 함께, 유즈콜렉터 스테이트=>화살표함수모양에서 (state.슬라이서 name.state의 키값) 3가지로 가져온다.
     const dispatch=useDispatch();
     const navigate=useNavigate();
 
