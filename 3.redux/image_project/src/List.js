@@ -1,4 +1,4 @@
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, Outlet, useParams } from "react-router-dom";
 
     // nationImage:[
@@ -14,6 +14,7 @@ export default function List(){
     // const nationImg=useSelector((state)=> state.nation.nationImage);
     // 유즈셀렉터는 화살표 형식인데, 스테이트가 화살표로 들어감
     const nations=useSelector((state)=>(state.nation.nationImage));
+    // 스테이트.슬라이스 네임.이니셜스테이트하이름
     // 배열에 각 이미지가 들어가있음
     const {relation}=useParams();
     // 현재 :relation 형태로 가져왔다.

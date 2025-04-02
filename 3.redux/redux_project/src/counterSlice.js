@@ -29,7 +29,7 @@ export const {increment, decrement, incrementByAmount} = counterSlice.actions;
 // 각 액션생성자를 수출함. = 카운터슬라이스.액션스;
 // 액션즈에 들어가있어서 객체 생성으로 저장
 export default counterSlice.reducer;
-// 기본적으로는 카운터 슬라이스의 리듀서를 수출함.
+// 기본적으로는 카운터 슬라이스의 리듀서를 수출함.(x 카운터 슬라이스를 수출함.)
 
 
 
